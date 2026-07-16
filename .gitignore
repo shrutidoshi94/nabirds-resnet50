@@ -1,0 +1,8 @@
+# Local / OS
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Optional: uncomment if weights are hosted elsewhere (GitHub file limit is 100MB)
+# models/*.pth
