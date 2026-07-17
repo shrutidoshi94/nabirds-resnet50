@@ -4,10 +4,13 @@ Fine-grained **NABirds** species classification with a fine-tuned **ResNet-50** 
 
 Course project: **SCU — Data Analytics with Python**.
 
-<!-- Replace YOUR_KAGGLE_NOTEBOOK_URL with your public notebook link -->
-[![Open in Kaggle](https://img.shields.io/badge/Kaggle-Open%20Notebook-20BEFF?logo=kaggle&logoColor=white)](YOUR_KAGGLE_NOTEBOOK_URL)
+
+
+[Open in Kaggle](https://www.kaggle.com/code/shrutidoshi94/nabirdsnotebook)
 
 > Training requires a GPU. This repo ships the **notebook logic** plus (after you upload them) **saved metrics, plots, and weights** so others can inspect results without re-running a long training job.
+
+
 
 ## Dataset & credits
 
@@ -21,7 +24,7 @@ NABirds is a collaborative effort among the Cornell Lab of Ornithology, Cornell 
 
 **Paper:** Grant Van Horn et al., *[Building a Bird Recognition App and Large Scale Dataset With Citizen Scientists](https://openaccess.thecvf.com/content_cvpr_2015/papers/Horn_Building_a_Bird_2015_CVPR_paper.pdf)*, CVPR 2015.
 
-Dataset page: https://dl.allaboutbirds.org/nabirds
+Dataset page: [https://dl.allaboutbirds.org/nabirds](https://dl.allaboutbirds.org/nabirds)
 
 ## Results & performance
 
@@ -29,36 +32,46 @@ Because training needs a GPU, the proof of a successful run lives in committed a
 
 ### Model metrics
 
-<!-- After your Kaggle run, copy numbers from results/final_test_metrics.json -->
 
-| Metric | Value |
-|---|---|
-| Test top-1 | _TBD — run on Kaggle, then paste from `results/final_test_metrics.json`_ |
-| Test top-5 | _TBD_ |
-| Best validation top-1 | _TBD_ |
-| Test loss | _TBD_ |
 
-Raw metrics file (once uploaded): [`results/final_test_metrics.json`](results/final_test_metrics.json)
+
+| Metric                | Value                                                                    |
+| --------------------- | ------------------------------------------------------------------------ |
+| Test top-1            | *TBD — run on Kaggle, then paste from* `results/final_test_metrics.json` |
+| Test top-5            | *TBD*                                                                    |
+| Best validation top-1 | *TBD*                                                                    |
+| Test loss             | *TBD*                                                                    |
+
+
+Raw metrics file (once uploaded): `[results/final_test_metrics.json](results/final_test_metrics.json)`
 
 ### Training curves
 
-![Loss and accuracy](images/loss_and_accuracy.png)
+Loss and accuracy
 
 ### Data snapshots
 
+
 | Class distribution | Sample training crops |
-|---|---|
-| ![Class distribution](images/class_distribution.png) | ![Sample images](images/sample_training_images.png) |
+| ------------------ | --------------------- |
+| Class distribution | Sample images         |
+
+
+
 
 ### Grad-CAM
 
-| Hardest classes | Easiest classes |
-|---|---|
-| ![Grad-CAM hardest](images/gradcam_hardest.png) | ![Grad-CAM easiest](images/gradcam_easiest.png) |
+
+| Hardest classes  | Easiest classes  |
+| ---------------- | ---------------- |
+| Grad-CAM hardest | Grad-CAM easiest |
+
+
+
 
 ### Trained weights
 
-Best validation checkpoint: [`models/best_model.pth`](models/best_model.pth)
+Best validation checkpoint: `[models/best_model.pth](models/best_model.pth)`
 
 Load without retraining:
 
@@ -76,22 +89,26 @@ model.eval()
 
 > ResNet-50 weights are ~100MB. If GitHub rejects the upload, use [Git LFS](https://git-lfs.com/) or host the file on Kaggle/Hugging Face and link it here.
 
+
+
 ## Repository layout
 
-| Path | Purpose |
-|---|---|
-| [`nabirdsnotebook.ipynb`](nabirdsnotebook.ipynb) | Full training + evaluation + Grad-CAM pipeline |
-| [`images/`](images/) | Saved plots for the README |
-| [`models/`](models/) | `best_model.pth` |
-| [`results/`](results/) | `final_test_metrics.json`, history CSV, per-class CSV |
+
+| Path                                             | Purpose                                               |
+| ------------------------------------------------ | ----------------------------------------------------- |
+| `[nabirdsnotebook.ipynb](nabirdsnotebook.ipynb)` | Full training + evaluation + Grad-CAM pipeline        |
+| `[images/](images/)`                             | Saved plots for the README                            |
+| `[models/](models/)`                             | `best_model.pth`                                      |
+| `[results/](results/)`                           | `final_test_metrics.json`, history CSV, per-class CSV |
+
+
+
 
 ## How to run on Kaggle
 
 1. Make a **public** Kaggle notebook (GPU recommended) and paste / sync this notebook.
 2. Attach NABirds so it mounts at:
-
-   `DATASET_PATH = "/kaggle/input/datasets/shrutidoshi94/nabirds/nabirds"`
-
+  `DATASET_PATH = "/kaggle/input/datasets/shrutidoshi94/nabirds/nabirds"`
    Adjust if your mount path differs.
 3. **Run All**. Artifacts are written under `/kaggle/working/images`, `models`, and `results`.
 4. In the right-hand **Output** sidebar, download those three folders into this GitHub repo (same names).
@@ -99,13 +116,17 @@ model.eval()
 6. Paste your public notebook URL into the Kaggle badge at the top of this README.
 7. To force a retrain on Kaggle, delete `models/best_model.pth` and re-run the training cells.
 
+
+
 ## Evaluation protocol
 
-| Split | Role |
-|---|---|
-| Train | Model updates (official NABirds train, minus val) |
-| Validation | Checkpoint selection + early stopping |
-| Test | Final reported accuracy only (never used to pick checkpoints) |
+
+| Split      | Role                                                          |
+| ---------- | ------------------------------------------------------------- |
+| Train      | Model updates (official NABirds train, minus val)             |
+| Validation | Checkpoint selection + early stopping                         |
+| Test       | Final reported accuracy only (never used to pick checkpoints) |
+
 
 Images are cropped to the provided NABirds bounding boxes before transforms. That matches common NABirds practice but is easier than whole-image classification.
 
@@ -120,6 +141,8 @@ Defaults from the Configuration cell:
 - `LR = 1e-4`
 - `IMG_SIZE = 224`
 - `SEED = 42`
+
+
 
 ## Requirements
 
