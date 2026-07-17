@@ -1,4 +1,4 @@
-# BirdRecognition
+# nabirds-resnet50
 
 Fine-grained **NABirds** species classification with a fine-tuned **ResNet-50** (PyTorch), plus Grad-CAM interpretability.
 
