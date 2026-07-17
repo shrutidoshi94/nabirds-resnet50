@@ -1,0 +1,11 @@
+{
+  "loss": 2.0918265530462317,
+  "top1": 0.6859091462672026,
+  "top5": 0.9109730848861284,
+  "best_val_top1": 0.7350605933974091,
+  "stopped_early": false,
+  "num_epochs_ran": 20,
+  "seed": 42,
+  "val_fraction": 0.1,
+  "early_stopping_patience": 5
+}
